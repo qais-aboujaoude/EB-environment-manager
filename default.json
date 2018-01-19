@@ -1,0 +1,51 @@
+{
+  "database": {
+    "dialect": "mysql",
+    "directory": "/app/models",
+    "master": {
+      "username": "aws_root_user",
+      "password": "n3WDbP!P3LiN3",
+      "database": "hauloapi",
+      "host": "hauloapimaster.crsompemigjb.us-west-2.rds.amazonaws.com",
+      "port": "3306"
+    },
+    "slaves": [
+      {
+        "username": "aws_root_user",
+        "password": "n3WDbP!P3LiN3",
+        "database": "hauloapi",
+        "host": "hauloapimaster-us-west-2b.crsompemigjb.us-west-2.rds.amazonaws.com",
+        "port": "3306"
+      }
+    ]
+  },
+  "cache": {
+    "status": "on",
+    "slaves": [
+      {
+        "host": "haulo-prod.iwjpuz.0001.euw1.cache.amazonaws.com",
+        "port": "6379"
+      }
+    ]
+  },
+  "synchronisation": {
+    "deepstream": {
+      "url": "ws://52.209.195.84:6020/deepstream",
+      "token": "",
+      "redis": {
+        "host":"52.209.195.84",
+        "port": "6379",
+        "password":"D3EpStre@meez"
+      }
+    }
+  },
+  "jwt": {
+    "secret": "mysecretkey",
+    "algorithm": "HS512"
+  },
+  "aws": {
+    "accessKeyId": "AKIAJJPSZPIACO2KPPFA",
+    "secretAccessKey": "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",
+    "region": "us-west-2"
+  }
+}

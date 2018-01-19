@@ -1,0 +1,19 @@
+{
+  "name": "environment-variables-filler",
+  "version": "1.0.0",
+  "description": "cli tools to fill the environment variables",
+  "main": "index.js",
+  "keywords": [
+    "cli",
+    "tools"
+  ],
+  "bin": {
+    "env-cli": "./index.js"
+  },
+  "author": "qais aboujaoude, connor makhlouta",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.13.0"
+  }
+}
