@@ -4,6 +4,22 @@ const fs             = require('fs'),
       exec           = require('child_process').exec,
       parsed_config  = [];
 
+const AWS = require('aws-sdk');
+AWS.config.update({region: 'eu-west-1'});
+const elasticbeanstalk = new AWS.ElasticBeanstalk()
+
+const params = {
+  EnvironmentName: "haulo-apiapp-demo",
+  OptionSettings: []
+}
+
+/*
+elasticbeanstalk.updateEnvironment(params, (err, data) => {
+   if (err) console.log(err, err.stack)
+   else     console.log(data)
+})
+*/
+
 /**
  * @method reads the json file
  * @param {file} object. the json object to be read
@@ -61,6 +77,23 @@ const fill_env_variables = (env_array) => {
   });
 }
 
+const full_eb_option_settings = (env_array) => {
+  return env_array.map(e => {
+    return {
+      Namespace: "aws:elasticbeanstalk:application:environment",
+      OptionName: e[0].toUpperCase(),
+      Value: e[1]
+    }
+  })
+}
+
+read_file('./', 'default.json')
+  .then(config => {
+    config_parser(config, '')
+    params.OptionSettings = full_eb_option_settings(parsed_config)
+    console.log(params)
+  })
+/*
 program
   .version('0.0.1')
   .usage('[options] <file ...>')
@@ -92,3 +125,4 @@ program
   })
   .parse(process.argv);
 
+*/
