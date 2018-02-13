@@ -1,24 +1,8 @@
 #!/usr/bin/env node
 const fs             = require('fs'),
-      program = require('commander'),
-      exec           = require('child_process').exec,
+      program        = require('commander'),
+      eb_sdk         = require('./src/eb-sdk.js'),
       parsed_config  = [];
-
-const AWS = require('aws-sdk');
-AWS.config.update({region: 'eu-west-1'});
-const elasticbeanstalk = new AWS.ElasticBeanstalk()
-
-const params = {
-  EnvironmentName: "haulo-apiapp-demo",
-  OptionSettings: []
-}
-
-/*
-elasticbeanstalk.updateEnvironment(params, (err, data) => {
-   if (err) console.log(err, err.stack)
-   else     console.log(data)
-})
-*/
 
 /**
  * @method reads the json file
@@ -77,7 +61,7 @@ const fill_env_variables = (env_array) => {
   });
 }
 
-const full_eb_option_settings = (env_array) => {
+const fill_eb_option_settings = (env_array) => {
   return env_array.map(e => {
     return {
       Namespace: "aws:elasticbeanstalk:application:environment",
@@ -87,42 +71,37 @@ const full_eb_option_settings = (env_array) => {
   })
 }
 
-read_file('./', 'default.json')
-  .then(config => {
-    config_parser(config, '')
-    params.OptionSettings = full_eb_option_settings(parsed_config)
-    console.log(params)
-  })
-/*
 program
   .version('0.0.1')
   .usage('[options] <file ...>')
   .arguments('<file>')
   .option('-p, --path [path]', 'path of the json file')
+  .option('-n, --name [name]', 'name of the eb environment to update')
   .option('-l, --local', 'populates the local enviornment')
   .option('-c, --cloud', 'populates the elastic beanstalk enviornment')
   .action((file) => {
     read_file(program.path, file)
       .then(config_object => {
         config_parser(config_object, '');
-        fill_env_variables(parsed_config)
-          .then(env_variables => {
-            if(program.local) {
+        if(program.local) {
+          fill_env_variables(parsed_config)
+            .then(env_variables => {
               fs.writeFile('.env', env_variables, (err) => {
                 if (err) throw err;
                 console.log('Done! enviornment variables saved in .env');
-              });
-            }
-             else if(program.cloud) {
-                exec(`eb setenv ${env_variables}`, (err, stdout, stderr) => {
-                  err ? console.log(err, stderr) : console.log(stdout);
-                });
-             }
-          })
-          .catch(err => console.log(err));
-      })
-      .catch(err => console.log(err));
+              });  
+            })
+            .catch(err => console.log(err));
+        }
+        else if(program.cloud) {
+          const params = {
+            EnvironmentName: program.name,
+            OptionSettings: fill_eb_option_settings(parsed_config)
+          }
+          eb_sdk.updateEnvironmentVariables(params)
+         }
+    })
+    .catch(err => console.log(err));
   })
   .parse(process.argv);
 
-*/
