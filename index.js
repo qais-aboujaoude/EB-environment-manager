@@ -61,10 +61,6 @@ const fill_env_variables = (env_array) => {
   });
 }
 
-const kousa = (a, b) => {
-  process.env[a] = b;
-}
-
 program
   .version('0.0.1')
   .usage('[options] <file ...>')
