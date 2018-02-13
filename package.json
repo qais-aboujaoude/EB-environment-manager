@@ -1,11 +1,14 @@
 {
-  "name": "environment-variables-filler",
+  "name": "env-cli-filler",
   "version": "1.0.0",
-  "description": "cli tools to fill the environment variables",
+  "description": "cli tool to fill the environment variables in an elastic beanstalk environment",
+  "repository": "gitlab:qiaboujaoude/environment-variables-filler",
   "main": "index.js",
   "keywords": [
     "cli",
-    "tools"
+    "tools",
+    "aws",
+    "evnironment variables"
   ],
   "bin": {
     "env-cli": "./index.js"
@@ -13,6 +16,7 @@
   "author": "qais aboujaoude, connor makhlouta",
   "license": "Apache-2.0",
   "dependencies": {
+    "aws-sdk": "^2.193.0",
     "commander": "^2.13.0"
   }
 }
