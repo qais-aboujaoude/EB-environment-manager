@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 const fs             = require('fs'),
       program = require('commander'),
-      chalk = require('chalk'),
-      shell = require('shelljs')
       exec           = require('child_process').exec,
       parsed_config  = [];
 
@@ -17,7 +15,7 @@ const read_file = (path, file) => {
       fs.readFile(`${file}`, (err, data) => {
         err ? reject(err) : resolve(JSON.parse(data));
       });
-    } else { 
+    } else {
       fs.readFile(`${path}${file}`, (err, data) => {
         err ? reject(err) : resolve(JSON.parse(data));
       });
@@ -86,11 +84,11 @@ program
                 console.log('Done! enviornment variables saved in .env');
               });
             }
-            // else if(program.cloud) {
-            //   // exec(`eb setenv ${env_variables}`, (err, stdout, stderr) => {
-            //   //   err ? console.log(err, stderr) : console.log(stdout);
-            //   // });
-            // }
+             else if(program.cloud) {
+                exec(`eb setenv ${env_variables}`, (err, stdout, stderr) => {
+                  err ? console.log(err, stderr) : console.log(stdout);
+                });
+             }
           })
           .catch(err => console.log(err));
       })
