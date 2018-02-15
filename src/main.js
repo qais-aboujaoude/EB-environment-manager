@@ -3,11 +3,17 @@ const fs = require('fs')
 
 const main = module.exports = {
   
-  parsed_config: [],
   /**
-   * @method reads the json file
-   * @param {file} object. the json object to be read
-   * @return  {Promise.<{data: object}>} a json object
+   * @member {<array>} [<parsed_config>]
+   */
+  parsed_config: [],
+  
+  /**
+   * @async
+   * @method read_file loads the json file
+   * @param {string} path the json object to be read
+   * @param {string} file the path to be read
+   * @return {Promise<{object}>} a json object
    **/
   read_file: (path, file) => {
     return new Promise((resolve, reject) => {
@@ -24,10 +30,9 @@ const main = module.exports = {
   },
 
   /**
-   * @method parses the config json file into an iterable array
-   * @param {object} object. the json object to be parsed
+   * @method config_parser parses the config json file into an iterable array
+   * @param {object} object the json object to be parsed
    * @param {string} parent the prefix for the 'parent' object
-   * @return nothing. Fills parsed_config with array of parsed config
    **/
   config_parser: (object, parent) => {
     for (let key in object) {
@@ -42,9 +47,10 @@ const main = module.exports = {
   },
 
   /**
-   * @method parses the config and turns it into a string of environment variables
-   * @param {array} env_array. the array of variables to be turned into a string
-   * @return  {Promise.<{env_variables: string}>} a string of enviornment variables
+   * @async
+   * @method fill_env_variables takes an array and transforms it to a string of environment variables
+   * @param {array} env_array the array of variables to be transformed into a string
+   * @return {Promise<{string}>} a string of enviornment variables
    **/
   fill_env_variables: (env_array) => {
     let env_variables = ''
@@ -61,6 +67,11 @@ const main = module.exports = {
     })
   },
 
+  /**
+   * @method fill_eb_option_settings the config and turns it into a string of environment variables
+   * @param {array} env_array. the array of variables to be turned into a string
+   * @return {} a string of enviornment variables
+   **/
   fill_eb_option_settings: (env_array) => {
     return env_array.map(e => {
       return {
@@ -71,6 +82,11 @@ const main = module.exports = {
     })
   },
 
+  /**
+   * @method write_local_file creates a file named .env 
+   * @param {string} env_variable the string of environment variables to be written into the file
+   * this string should be the return value of fil_env_variables
+   */
   write_local_file: (env_variable) => {
     fs.writeFile('.env', env_variables, (err) => {
       if (err) throw err

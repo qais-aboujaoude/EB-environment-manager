@@ -32,4 +32,4 @@ program
     })
     .catch(err => console.log(err));
   })
-  .parse(process.argv);
+  .parse(process.argv)
