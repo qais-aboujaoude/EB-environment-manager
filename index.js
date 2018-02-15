@@ -4,7 +4,7 @@ const program = require('commander'),
       m       = require('./src/main.js')
 
 program
-  .version('0.0.1')
+  .version('0.0.2')
   .usage('[options] <file ...>')
   .arguments('<file>')
   .option('-p, --path [path]', 'path of the json file')
