@@ -37,7 +37,7 @@ env-cli -h
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Mozilla Public License MPL  License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
