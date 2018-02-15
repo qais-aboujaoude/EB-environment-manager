@@ -69,6 +69,13 @@ const main = module.exports = {
         Value: e[1]
       }
     })
+  },
+
+  write_local_file: (env_variable) => {
+    fs.writeFile('.env', env_variables, (err) => {
+      if (err) throw err
+      console.log('Done! enviornment variables saved in .env')
+    })
   }
 
 }

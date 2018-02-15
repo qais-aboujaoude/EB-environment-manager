@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-const program        = require('commander'),
-      m          = require('./src/main.js'),
-      fs = require('fs'),
-      eb_sdk         = require('./src/eb-sdk.js')
+const program = require('commander'),
+      eb_sdk  = require('./src/eb-sdk.js'),
+      m       = require('./src/main.js')
 
 program
   .version('0.0.1')
@@ -19,10 +18,7 @@ program
         if(program.local) {
           m.fill_env_variables(m.parsed_config)
             .then(env_variables => {
-              fs.writeFile('.env', env_variables, (err) => {
-                if (err) throw err;
-                console.log('Done! enviornment variables saved in .env');
-              });  
+              m.write_local_file(env_variables)
             })
             .catch(err => console.log(err));
         }
