@@ -2,12 +2,13 @@
 const fs = require('fs')
 
 const main = module.exports = {
-  
+
   /**
-   * @member {<array>} [<parsed_config>]
+   * @member {array} parsed_config the array that gets filled
+   * with the parsed configurtion from the config_parser function
    */
   parsed_config: [],
-  
+
   /**
    * @async
    * @method read_file loads the json file
@@ -48,11 +49,11 @@ const main = module.exports = {
 
   /**
    * @async
-   * @method fill_env_variables takes an array and transforms it to a string of environment variables
+   * @method env_to_string takes an array and transforms it to a string of environment variables
    * @param {array} env_array the array of variables to be transformed into a string
    * @return {Promise<{string}>} a string of enviornment variables
    **/
-  fill_env_variables: (env_array) => {
+  env_to_string: (env_array) => {
     let env_variables = ''
     return new Promise((resolve, reject) => {
       if (Array.isArray(env_array) && env_array.length
@@ -68,11 +69,11 @@ const main = module.exports = {
   },
 
   /**
-   * @method fill_eb_option_settings the config and turns it into a string of environment variables
+   * @method env_to_object the config and turns it into a string of environment variables
    * @param {array} env_array. the array of variables to be turned into a string
    * @return {} a string of enviornment variables
    **/
-  fill_eb_option_settings: (env_array) => {
+  env_to_object: (env_array) => {
     return env_array.map(e => {
       return {
         Namespace: "aws:elasticbeanstalk:application:environment",
@@ -93,5 +94,5 @@ const main = module.exports = {
       console.log('Done! enviornment variables saved in .env')
     })
   }
-
+  
 }
