@@ -7,7 +7,7 @@ program
   .version('0.0.2')
   .usage('[options] <file ...>')
   .arguments('<file>')
-  .option('-p, --path [path]', 'path of the json file')
+  .option('-p, --path [path]', 'path of the json file to parse')
   .option('-n, --name [name]', 'name of the eb environment to update')
   .option('-l, --local', 'populates the local enviornment')
   .option('-c, --cloud', 'populates the elastic beanstalk enviornment')
@@ -33,4 +33,3 @@ program
     .catch(err => console.log(err));
   })
   .parse(process.argv);
-
