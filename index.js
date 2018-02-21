@@ -4,9 +4,9 @@ const program = require('commander'),
       m       = require('./src/main.js'),
       csv     = require('./src/csv-parser')
 
-const local_vs_cloud = (parsed_array) => {
+const local_or_cloud = (parsed_array) => {
   if(program.local) {
-    m.env_to_string(m.parsed_config)
+    m.env_to_string(parsed_array)
       .then(env_variables => {
         m.write_local_file(env_variables)
       })
@@ -15,7 +15,7 @@ const local_vs_cloud = (parsed_array) => {
   else if(program.cloud) {
     const params = {
       EnvironmentName: program.name,
-      OptionSettings: m.env_to_object(parsed_config)
+      OptionSettings: m.env_to_object(parsed_array)
     }
     eb_sdk.updateEnvironmentVariables(params)
    }
@@ -30,25 +30,19 @@ program
   .option('-l, --local', 'populates the local enviornment')
   .option('-c, --cloud', 'populates the elastic beanstalk enviornment')
   .action(file => {
-    m.read_file(program.path, file)
-      .then(config_object => {
-        m.config_parser(config_object, '');
-        if(program.local) {
-          console.log(m.parsed_config)
-          m.env_to_string(m.parsed_config)
-            .then(env_variables => {
-              m.write_local_file(env_variables)
-            })
-            .catch(err => console.log(err));
-        }
-        else if(program.cloud) {
-          const params = {
-            EnvironmentName: program.name,
-            OptionSettings: m.env_to_object(m.parsed_config)
-          }
-          eb_sdk.updateEnvironmentVariables(params)
-         }
-    })
-    .catch(err => console.log(err));
+    if (m.file_type(file) === 'json') {
+      m.read_file(program.path, file)
+        .then(config_object => {
+          m.config_parser(config_object, '');
+          local_or_cloud(m.parsed_config)
+        })
+        .catch(err => console.log(err));
+    } else {
+      csv.pasre_csv_to_array(file)
+        .then(parsed_array => {
+          local_or_cloud(parsed_array)
+        })
+        .catch(err => console.log(err))
+    }
   })
   .parse(process.argv)
