@@ -12,7 +12,7 @@
     "elastic beanstalk"
   ],
   "bin": {
-    "env-cli": "./index.js"
+    "eb-manager": "./index.js"
   },
   "author": "qais aboujaoude, connor makhlouta",
   "license": "Mozilla Public License 2.0",
