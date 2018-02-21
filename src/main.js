@@ -9,6 +9,8 @@ const main = module.exports = {
    */
   parsed_config: [],
 
+  check_file: file => file.split('.').pop(),
+
   /**
    * @async
    * @method read_file loads the json file
