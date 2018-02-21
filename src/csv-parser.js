@@ -15,10 +15,13 @@ const csv_parser = module.exports = {
     csv_parser.file_reader(file_to_parse)
     return new Promise((resolve, reject) => {
       rl.on('line', input => {
-        parsed_array.push(input.split(','))
+        let index = input.indexOf(',')
+        parsed_array.push([input.slice(0, index), input.slice(index+1)])
       })
       rl.on('close', () => {
-        parsed_array.length ? resolve(parsed_array) : reject('Error: empty array')
+        parsed_array.length 
+          ? resolve(parsed_array) 
+          : reject('Error: empty array')
       })
     })
   }
