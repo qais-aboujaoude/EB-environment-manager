@@ -1,19 +1,35 @@
 # EB-environment-manager
 
-A command line tool that generates a local environment variables and/or fills an Elastic Beanstalk Environment with Environment Variables
-It handles json and csv files
+A command line tool that parses a json or a csv file that contains environment variables and updates Elastic Beanstalk Environment with Environment Variables. It can also generated a local file .env that contains the environment variables
+It handles json and csv files only 
 
 ### Installing
 
-Install package from npm
+Install package from npm. Install it globally
 
 ```
 npm install -g eb-environment-manager 
 ```
 ### Usage
 
-To use this package and understand how it works run the following command
+To run the package: 
+~~~
+eb-manager
+~~~
 
+Available options: 
+
+~~~
+Options:
+    -V, --version      output the version number
+    -p, --path [path]  path of the json file to parse
+    -n, --name [name]  name of the eb environment to update
+    -l, --local        populates the local enviornment
+    -c, --cloud        populates the elastic beanstalk enviornment
+    -h, --help         output usage information
+~~~
+
+For help: 
 ~~~
 env-cli -h 
 ~~~
