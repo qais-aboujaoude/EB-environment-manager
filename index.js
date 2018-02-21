@@ -22,11 +22,11 @@ const local_or_cloud = parsed_array => {
 }
 
 program
-  .version('0.0.2')
+  .version('1.0.2')
   .usage('[options] <file ...>')
   .arguments('<file>')
   .option('-p, --path [path]', 'path of the json file to parse')
-  .option('-n, --name [name]', 'name of the eb environment to update')
+  .option('-n, --name [name]', 'name of the Elastic Beanstalk environment to update')
   .option('-l, --local', 'populates the local enviornment')
   .option('-c, --cloud', 'populates the elastic beanstalk enviornment')
   .action(file => {
