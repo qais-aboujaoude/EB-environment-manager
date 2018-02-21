@@ -1,12 +1,11 @@
 # Environment Variables Filler 
 
-A command line tool that generates a local environment variables and/or fills an 
-
-Elastic Beanstalk Environment with Environment Variables
+A command line tool that generates a local environment variables and/or fills an Elastic Beanstalk Environment with Environment Variables
+It handles json and csv files
 
 ## Getting Started
 
-Clone the repository. 
+NPM package is a work in progress. Now just clone the repo 
 
 ### Installing
 
