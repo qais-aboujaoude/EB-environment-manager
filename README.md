@@ -17,6 +17,9 @@ To run the package:
 eb-manager
 ~~~
 
+Available options: 
+
+~~~
 Options:
     -V, --version      output the version number
     -p, --path [path]  path of the json file to parse
@@ -24,6 +27,7 @@ Options:
     -l, --local        populates the local enviornment
     -c, --cloud        populates the elastic beanstalk enviornment
     -h, --help         output usage information
+~~~
 
 For help: 
 ~~~
