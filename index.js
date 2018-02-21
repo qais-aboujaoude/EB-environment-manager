@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const program = require('commander'),
       eb_sdk  = require('./src/eb-sdk.js'),
-      m       = require('./src/main.js'),
-      csv     = require('./src/csv-parser')
+      csv     = require('./src/csv-parser'),
+      m       = require('./src/main.js')
 
 const local_or_cloud = (parsed_array) => {
   if(program.local) {
