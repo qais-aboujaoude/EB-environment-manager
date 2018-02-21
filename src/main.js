@@ -55,7 +55,7 @@ const main = module.exports = {
    * @param {array} env_array the array of variables to be transformed into a string
    * @return {Promise<{string}>} a string of enviornment variables
    **/
-  env_to_string: (env_array) => {
+  env_to_string: env_array => {
     let env_variables = ''
     return new Promise((resolve, reject) => {
       if (Array.isArray(env_array) && env_array.length
@@ -75,7 +75,7 @@ const main = module.exports = {
    * @param {array} env_array. the array of variables to be turned into a string
    * @return {} a string of enviornment variables
    **/
-  env_to_object: (env_array) => {
+  env_to_object: env_array => {
     return env_array.map(e => {
       return {
         Namespace: "aws:elasticbeanstalk:application:environment",
@@ -90,7 +90,7 @@ const main = module.exports = {
    * @param {string} env_variable the string of environment variables to be written into the file
    * this string should be the return value of fil_env_variables
    */
-  write_local_file: (env_variables) => {
+  write_local_file: env_variables => {
     fs.writeFile('.env', env_variables, (err) => {
       if (err) throw err
       console.log('Done! enviornment variables saved in .env')
