@@ -9,7 +9,7 @@ const main = module.exports = {
    */
   parsed_config: [],
 
-  check_file: file => file.split('.').pop(),
+  file_type: file => file.split('.').pop(),
 
   /**
    * @async
