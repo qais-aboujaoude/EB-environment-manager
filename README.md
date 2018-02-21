@@ -1,4 +1,4 @@
-# Environment Variables Filler 
+# EB-environment-manager
 
 A command line tool that generates a local environment variables and/or fills an Elastic Beanstalk Environment with Environment Variables
 It handles json and csv files
