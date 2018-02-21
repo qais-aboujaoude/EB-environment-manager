@@ -8,7 +8,7 @@ It handles json and csv files
 Install package from npm
 
 ```
-npm i eb-environment-manager 
+npm install -g eb-environment-manager 
 ```
 ### Usage
 
