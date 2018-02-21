@@ -2,9 +2,9 @@
 const program = require('commander'),
       eb_sdk  = require('./src/eb-sdk.js'),
       csv     = require('./src/csv-parser'),
-      m       = require('./src/main.js')
+      m       = require('./src/main.js') // short for main
 
-const local_or_cloud = (parsed_array) => {
+const local_or_cloud = parsed_array => {
   if(program.local) {
     m.env_to_string(parsed_array)
       .then(env_variables => {
@@ -37,12 +37,14 @@ program
           local_or_cloud(m.parsed_config)
         })
         .catch(err => console.log(err));
-    } else {
+    } else if (m.file_type(file) === 'csv') {
       csv.pasre_csv_to_array(file)
         .then(parsed_array => {
           local_or_cloud(parsed_array)
         })
         .catch(err => console.log(err))
+    } else {
+      throw new Error('Error: File type not supported');
     }
   })
   .parse(process.argv)
