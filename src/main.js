@@ -9,6 +9,11 @@ const main = module.exports = {
    */
   parsed_config: [],
 
+  /**
+   * @method file_type returns the extension/type of the file
+   * @param {string} file file to check the type of
+   * @return {string} 
+   */
   file_type: file => file.split('.').pop(),
 
   /**
@@ -18,6 +23,7 @@ const main = module.exports = {
    * @param {string} file the path to be read
    * @return {Promise<{object}>} a json object
    **/
+  // TODO rethink your life
   read_file: (path, file) => {
     return new Promise((resolve, reject) => {
       if (!path) {
