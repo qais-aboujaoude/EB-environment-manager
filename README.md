@@ -3,17 +3,12 @@
 A command line tool that generates a local environment variables and/or fills an Elastic Beanstalk Environment with Environment Variables
 It handles json and csv files
 
-## Getting Started
-
-NPM package is a work in progress. Now just clone the repo 
-
 ### Installing
 
-Switch to the directory of the cloned repository 
+Install package from npm
 
 ```
-npm install // To install dependencies
-npm install -g // To install this module globally 
+npm i eb-environment-manager 
 ```
 ### Usage
 
