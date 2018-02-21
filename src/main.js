@@ -90,7 +90,7 @@ const main = module.exports = {
    * @param {string} env_variable the string of environment variables to be written into the file
    * this string should be the return value of fil_env_variables
    */
-  write_local_file: (env_variable) => {
+  write_local_file: (env_variables) => {
     fs.writeFile('.env', env_variables, (err) => {
       if (err) throw err
       console.log('Done! enviornment variables saved in .env')
