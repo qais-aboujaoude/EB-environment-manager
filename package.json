@@ -1,5 +1,5 @@
 {
-  "name": "env-cli-filler",
+  "name": "eb-environment-manager",
   "version": "1.0.0",
   "description": "cli tool to fill the environment variables of an elastic beanstalk environment",
   "repository": "gitlab:qiaboujaoude/environment-variables-filler",
@@ -15,7 +15,7 @@
     "env-cli": "./index.js"
   },
   "author": "qais aboujaoude, connor makhlouta",
-  "license": "Apache-2.0",
+  "license": "Mozilla Public License 2.0",
   "dependencies": {
     "aws-sdk": "^2.193.0",
     "commander": "^2.13.0"
