@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const program = require('commander'),
-      eb_sdk  = require('./src/eb-sdk.js'),
+      eb_sdk  = require('./src/eb-sdk'),
+      flush   = require('./src/flush-env')
       csv     = require('./src/csv-parser'),
       m       = require('./src/main.js') // short for main
 
@@ -22,11 +23,19 @@ const local_or_cloud = parsed_array => {
 }
 
 program
+  .command('delete')
+  .action(() => {
+    flush.flushEnvironmentVariables(program.app, program.name)
+  })
+
+program
   .version('1.0.2')
+  .description('A tool to manage the enviornment variables of an Elastic Beanstalk App')
   .usage('[options] <file ...>')
   .arguments('<file>')
   .option('-p, --path [path]', 'path of the json file to parse')
   .option('-n, --name [name]', 'name of the Elastic Beanstalk environment to update')
+  .option('-a, --app [app]', 'name of the Elastic Beanstalk app')
   .option('-l, --local', 'populates the local enviornment')
   .option('-c, --cloud', 'populates the elastic beanstalk enviornment')
   .action(file => {
