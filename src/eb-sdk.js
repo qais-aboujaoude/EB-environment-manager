@@ -18,6 +18,14 @@ module.exports = {
     })
   },
 
+  /**
+   * @async
+   * @method getEnvironmentVariables runs the sdk's fdescribeConfigurationSettings
+   * the returned data is filtered and the function returns a
+   * string containing the the evnironment variables
+   * @param {object} params the paramaters object that contains EB App and Env name
+   * @return {string} a string that contains the environment variables
+   */
   getEnvironmentVariables: params => {
     return new Promise ((resolve, reject) => {
       elasticbeanstalk.describeConfigurationSettings(params, (err, data) => {
