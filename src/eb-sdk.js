@@ -19,9 +19,18 @@ module.exports = {
   },
 
   getEnvironmentVariables: params => {
-    elasticbeanstalk.describeConfigurationSettings(params, (err, data) => {
-      if (err) console.log(err, err.stack)
-      else     console.log(data)
+    return new Promise ((resolve, reject) => {
+      elasticbeanstalk.describeConfigurationSettings(params, (err, data) => {
+        if (err) {
+          reject(err, err.stack)
+        }
+        else {
+          const env_array = data.ConfigurationSettings[0].OptionSettings.filter(o => {
+            return o.OptionName === 'EnvironmentVariables'
+          })
+          resolve(env_array[0].Value)
+        }
+      })
     })
   }
 }
