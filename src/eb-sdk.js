@@ -11,13 +11,19 @@ module.exports = {
    * @param {object} params the paramaters object that contains
    * the name of the environment and the environmetn variables to update
    */
-  updateEnvironmentVariables: (params) => {
+  updateEnvironmentVariables: params => {
     elasticbeanstalk.updateEnvironment(params, (err, data) => {
       if (err) console.log(err, err.stack)
       else     console.log(data)
     })
-  }
+  },
 
+  getEnvironmentVariables: params => {
+    elasticbeanstalk.describeConfigurationSettings(params, (err, data) => {
+      if (err) console.log(err, err.stack)
+      else     console.log(data)
+    })
+  }
 }
 
 
