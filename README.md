@@ -1,6 +1,7 @@
 # EB-environment-manager
 
-A command line tool that parses a json or a csv file that contains environment variables and updates Elastic Beanstalk Environment with Environment Variables. It can also generated a local file .env that contains the environment variables
+A command line tool that parses a json or a csv file that contains environment variables and updates Elastic Beanstalk Environment with parsed environment variables. It can also generated a local file .env that contains the environment variables.
+
 It handles json and csv files only 
 
 ### Installing
@@ -51,4 +52,6 @@ This project is licensed under the Mozilla Public License MPL  License - see the
 
 ## Acknowledgments
 
-* Thanks to Hassan Assi for all the love and support
+Thanks to:
+* Hassan Assi for all the love and support
+* George Rattel for helping with the regex
