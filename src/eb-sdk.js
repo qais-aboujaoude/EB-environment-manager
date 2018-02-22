@@ -2,6 +2,11 @@ const AWS = require('aws-sdk');
 AWS.config.update({region: 'eu-west-1'});
 const elasticbeanstalk = new AWS.ElasticBeanstalk()
 
+const format_output= string => {
+  const rgx = /=.*?,/g
+  return string.replace(rgx, '= ').replace(/(.*=).*/, '$1 ')
+}
+
 module.exports = {
 
   /**
@@ -39,7 +44,8 @@ module.exports = {
           const env_array = data.ConfigurationSettings[0].OptionSettings.filter(o => {
             return o.OptionName === 'EnvironmentVariables'
           })
-          resolve(env_array[0].Value)
+          resolve(format_output(env_array[0].Value))
+          //resolve(env_array[0].Value)
         }
       })
     })
