@@ -51,4 +51,6 @@ This project is licensed under the Mozilla Public License MPL  License - see the
 
 ## Acknowledgments
 
-* Thanks to Hassan Assi for all the love and support
+Thanks to:
+* Hassan Assi for all the love and support
+* George Rattel for helping with the regex
