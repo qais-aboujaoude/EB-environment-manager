@@ -2,10 +2,13 @@ const AWS = require('aws-sdk');
 AWS.config.update({region: 'eu-west-1'});
 const elasticbeanstalk = new AWS.ElasticBeanstalk()
 
-const format_output= string => {
-  const rgx = /=.*?,/g
-  return string.replace(rgx, '= ').replace(/(.*=).*/, '$1 ')
-}
+/**
+ * @method format_output replaces everything between after a = and till a ,
+ * with an empty space
+ * @param {string} string to format
+ * @return {string} formatted string
+ */
+const format_output= s => s.replace(/=.*?,/g, '= ').replace(/(.*=).*/, '$1 ')
 
 module.exports = {
 
@@ -41,11 +44,9 @@ module.exports = {
           reject(err, err.stack)
         }
         else {
-          const env_array = data.ConfigurationSettings[0].OptionSettings.filter(o => {
-            return o.OptionName === 'EnvironmentVariables'
-          })
+          const env_array = data.ConfigurationSettings[0].OptionSettings
+            .filter(o => o.OptionName === 'EnvironmentVariables')
           resolve(format_output(env_array[0].Value))
-          //resolve(env_array[0].Value)
         }
       })
     })
