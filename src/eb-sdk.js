@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk'),
       elasticbeanstalk = new AWS.ElasticBeanstalk()
 
+
 /**
  * @method format_output replaces everything between after a = and till a ,
  * with an empty space
@@ -8,6 +9,8 @@ const AWS = require('aws-sdk'),
  * @return {string} formatted string
  */
 const format_output= s => s.replace(/=.*?,/g, '= ').replace(/(.*=).*/, '$1 ')
+process.env.AWS_SDK_LOAD_CONFIG = true
+process.env.AWS_REGION = 'eu-west-1'
 
 module.exports = {
 
@@ -45,8 +48,9 @@ module.exports = {
         else {
           const env_array = data.ConfigurationSettings[0].OptionSettings
             .filter(o => o.OptionName === 'EnvironmentVariables')
-          console.log(env_array[0])
-          resolve(format_output(env_array[0].Value))
+          typeof env_array[0].Value === 'undefined'
+            ? reject(`Error: Environment doesn't contain any Environment Variables`)
+            : resolve(format_output(env_array[0].Value))
         }
       })
     })
