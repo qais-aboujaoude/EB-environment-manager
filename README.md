@@ -90,7 +90,7 @@ env-cli -h
 ## Acknowledgments
 
 Thanks to:
-* Hassan Assi for all the love and support
+* Hassan Assi for all the love, complaints and support
 * George Rattel for helping with the regex
 * [Commander](https://github.com/tj/commander.js/) for the amazing package. 
 
