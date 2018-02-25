@@ -1,16 +1,15 @@
+process.env.AWS_SDK_LOAD_CONFIG = true
+
 const AWS = require('aws-sdk'),
       elasticbeanstalk = new AWS.ElasticBeanstalk()
 
-
 /**
- * @method format_output replaces everything between after a = and till a ,
+ * @method format_output replaces everything between a '=' and till a ','
  * with an empty space
  * @param {string} string to format
  * @return {string} formatted string
  */
 const format_output= s => s.replace(/=.*?,/g, '= ').replace(/(.*=).*/, '$1 ')
-process.env.AWS_SDK_LOAD_CONFIG = true
-process.env.AWS_REGION = 'eu-west-1'
 
 module.exports = {
 

@@ -5,8 +5,6 @@ const program = require('commander'),
       csv     = require('./src/csv-parser'),
       m       = require('./src/main.js') // short for main
 
-process.env.AWS_SDK_LOAD_CONFIG = true
-
 const local_or_cloud = parsed_array => {
   if(program.local) {
     m.env_to_string(parsed_array)
