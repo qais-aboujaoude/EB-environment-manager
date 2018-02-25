@@ -1,6 +1,5 @@
-const AWS = require('aws-sdk');
-AWS.config.update({region: 'eu-west-1'});
-const elasticbeanstalk = new AWS.ElasticBeanstalk()
+const AWS = require('aws-sdk'),
+      elasticbeanstalk = new AWS.ElasticBeanstalk()
 
 /**
  * @method format_output replaces everything between after a = and till a ,
@@ -14,7 +13,7 @@ module.exports = {
 
   /**
    * @method updateEnvironmentVariables runs the sdk's function updateEnvironment
-   * and updates the environment with the environment variables supploed by
+   * and updates the environment with the environment variables supplied by
    * the user in the main program
    * @param {object} params the paramaters object that contains
    * the name of the environment and the environmetn variables to update
@@ -46,11 +45,10 @@ module.exports = {
         else {
           const env_array = data.ConfigurationSettings[0].OptionSettings
             .filter(o => o.OptionName === 'EnvironmentVariables')
+          console.log(env_array[0])
           resolve(format_output(env_array[0].Value))
         }
       })
     })
   }
 }
-
-

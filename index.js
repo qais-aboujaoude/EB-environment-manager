@@ -5,13 +5,15 @@ const program = require('commander'),
       csv     = require('./src/csv-parser'),
       m       = require('./src/main.js') // short for main
 
+process.env.AWS_SDK_LOAD_CONFIG = true
+
 const local_or_cloud = parsed_array => {
   if(program.local) {
     m.env_to_string(parsed_array)
       .then(env_variables => {
         m.write_local_file(env_variables)
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
   else if(program.cloud) {
     const params = {
@@ -42,10 +44,10 @@ program
     if (m.file_type(file) === 'json') {
       m.read_file(program.path, file)
         .then(config_object => {
-          m.config_parser(config_object, '');
+          m.config_parser(config_object, '')
           local_or_cloud(m.parsed_config)
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
     } else if (m.file_type(file) === 'csv') {
       csv.pasre_csv_to_array(file)
         .then(parsed_array => {
@@ -53,7 +55,8 @@ program
         })
         .catch(err => console.log(err))
     } else {
-      throw new Error('Error: File type not supported');
+      throw new Error('Error: File type not supported')
     }
   })
-  .parse(process.argv)
+  
+program.parse(process.argv)
