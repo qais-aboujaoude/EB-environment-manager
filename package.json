@@ -15,7 +15,7 @@
     "eb-manager": "./index.js"
   },
   "author": "qais aboujaoude, connor makhlouta",
-  "license": "Mozilla Public License 2.0",
+  "license": "MPL-2.0",
   "dependencies": {
     "aws-sdk": "^2.193.0",
     "commander": "^2.13.0"
