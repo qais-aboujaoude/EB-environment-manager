@@ -28,7 +28,16 @@ const params = {
     type: 'CODEPIPELINE',
   }
 }
+module.exports = {
 
+  updateCodebuildProject: params => {
+    codebuild.updateProject(params, (err, data) => {
+      if (err) console.log(err, err.stack)
+      else     console.log(data)
+    })
+  }
+
+}
 
 codebuild.updateProject(params, (err, data) => {
   if (err) console.log(err, err.stack)

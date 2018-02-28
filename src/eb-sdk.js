@@ -1,6 +1,6 @@
 process.env.AWS_SDK_LOAD_CONFIG = true
 
-const AWS = require('aws-sdk'),
+const AWS              = require('aws-sdk'),
       elasticbeanstalk = new AWS.ElasticBeanstalk()
 
 /**
