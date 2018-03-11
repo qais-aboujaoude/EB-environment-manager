@@ -103,6 +103,11 @@ const main = module.exports = {
     })
   },
 
+  /**
+   * @method create_dotenv_file takes an array and creates a .env
+   * file that has key:value separated by new lines
+   * @param {array} env_array the array to write into a file
+   */
   create_dotenv_file: env_array => {
     const file = fs.createWriteStream('.env');
     file.on('error', err => { throw new Error(`Error: ${err}`) })
