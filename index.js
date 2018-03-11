@@ -7,12 +7,7 @@ const program = require('commander'),
 
 const local_or_cloud = parsed_array => {
   if(program.local) {
-    m.dotenv_maker(parsed_array)
-    // m.env_to_string(parsed_array)
-    //   .then(env_variables => {
-    //     m.write_local_file(env_variables)
-    //   })
-    //   .catch(err => console.log(err))
+    m.create_dotenv_file(parsed_array)
   }
   else if(program.cloud) {
     const params = {
