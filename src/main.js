@@ -103,9 +103,9 @@ const main = module.exports = {
     })
   },
 
-  dotenv_maker: env_array => {
-    const file = fs.createWriteStream('array.txt');
-    file.on('error', function(err) { /* error handling */ })
+  create_dotenv_file: env_array => {
+    const file = fs.createWriteStream('.env');
+    file.on('error', err => { throw new Error(`Error: ${err}`) })
     for (let [index, val] of env_array.entries()) {
       file.write(`${val[0].toUpperCase()}=${val[1]} \n`)
     }
