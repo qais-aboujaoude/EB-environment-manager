@@ -115,6 +115,7 @@ const main = module.exports = {
       file.write(`${val[0].toUpperCase()}=${val[1]} \n`)
     }
     file.end()
+    console.log(`Done!\nenviornment variables saved in .env`)
   }
   
 }
