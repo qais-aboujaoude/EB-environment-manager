@@ -1,16 +1,16 @@
 # EB-environment-manager
 
-A command line tool that parses a json or a csv file that contains environment variables and updates Elastic Beanstalk Environment with parsed environment variables. It can also generate a local file .env that contains the environment variables.
+A command line tool that parses a json or a csv file that contains environment variables and updates Elastic Beanstalk Environment with parsed environment variables. 
 
-It can handle flushing/deleting all environment variables in an environment 
-but you must have [EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) installed locally
-on your machine and you must call this program in a directory that has been initialized with EB-CLI
+It can also generate a .env that can be used with other packages like [dotenv](https://www.npmjs.com/package/dotenv) 
+
+It can handle flushing/deleting all environment variables in an environment but you must have [EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) installed locally on your machine and you must call this program in a directory that has been initialized with eb-cli
 
 It handles json and csv files only 
 
 ### Installing
 
-Install package from npm. Install it globally
+via npm
 
 ```
 npm install -g eb-environment-manager 
@@ -19,9 +19,9 @@ npm install -g eb-environment-manager
 
 This program will assume the AWS region to be defined as a global variable.  
 
-If the region is not defined as a global variable, then it will retrieve the region from the 
+If the region is not defined as a global variable, then it will retrieve the region from the ~/.aws/credentials  or the ~/.aws/config. 
 
-~/.aws/credentials  or the ~/.aws/config. You can read more about how the aws-sdk handles the region [here](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-region.html#setting-region-order-of-precedence)
+You can read more about how the aws-sdk handles the region [here](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-region.html#setting-region-order-of-precedence)
 
 Easiest way to switch/modify the region would be to set the AWS_REGION global variable
 

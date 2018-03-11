@@ -25,7 +25,7 @@ program
   })
 
 program
-  .version('1.0.2')
+  .version('1.2.0')
   .description('A tool to manage the enviornment variables of an Elastic Beanstalk App')
   .usage('[options] <file ...>')
   .arguments('<file>')
