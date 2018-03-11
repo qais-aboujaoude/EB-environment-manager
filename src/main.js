@@ -101,6 +101,15 @@ const main = module.exports = {
       if (err) throw err
       console.log('Done! enviornment variables saved in .env')
     })
+  },
+
+  dotenv_maker: env_array => {
+    const file = fs.createWriteStream('array.txt');
+    file.on('error', function(err) { /* error handling */ })
+    for (let [index, val] of env_array.entries()) {
+      file.write(`${val[0].toUpperCase()}=${val[1]} \n`)
+    }
+    file.end()
   }
   
 }
