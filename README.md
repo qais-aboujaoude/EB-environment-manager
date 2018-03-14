@@ -14,7 +14,6 @@ install globally via npm:
 
 ```
 npm i -g eb-environment-manager 
-
 ```
 
 ### Usage
