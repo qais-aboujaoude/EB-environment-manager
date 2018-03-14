@@ -7,7 +7,7 @@ const fs = require('fs'),
    * @return {object} a readline object
    */
 const file_reader = file_to_parse => {
-    return rl = readline.createInterface({
+    return readline.createInterface({
       input: fs.createReadStream(file_to_parse),
       terminal: false
     })
@@ -36,5 +36,22 @@ const csv_parser = module.exports = {
           : reject('Error: empty array')
       })
     })
+  },
+
+  pasreCsvToArray: file_to_parse => {
+    const parsed_array = []
+    return new Promise((resolve, reject) => {
+      file_reader(file_to_parse)
+        .on('line', input => {
+          let index = input.indexOf(',')
+          parsed_array.push([input.slice(0, index), input.slice(index + 1)])
+        })
+        .on('close', () => {
+          parsed_array.length
+            ? resolve(parsed_array)
+            : reject('Error: empty array')
+        })
+    })
   }
 }
+
