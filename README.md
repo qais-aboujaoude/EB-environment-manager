@@ -1,20 +1,22 @@
 # EB-environment-manager
 
-A command line tool that parses a json or a csv file that contains environment variables and updates Elastic Beanstalk Environment with parsed environment variables. 
+A command line tool that parses a json or a csv file that contains environment variables and updates a selected Elastic Beanstalk Environment with environment variables from the csv/json file. 
 
-It can also generate a .env that can be used with other packages like [dotenv](https://www.npmjs.com/package/dotenv) 
+It can also generate a **.env** file that can be used with other packages like [dotenv](https://www.npmjs.com/package/dotenv) 
 
-It can handle flushing/deleting all environment variables in an environment but you must have [EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) installed locally on your machine and you must call this program in a directory that has been initialized with eb-cli
+It can handle flushing/deleting all environment variables in an environment but you must have [EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) installed locally on your machine and you must call this program in a directory that has been [initialized](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb3-init.html) with eb-cli
 
-It handles json and csv files only 
+It handles json and csv files only. 
 
 ### Installing
 
-via npm
+install globally via npm:
 
 ```
-npm install -g eb-environment-manager 
+npm i -g eb-environment-manager 
+
 ```
+
 ### Usage
 
 This program will assume the AWS region to be defined as a global variable.  
@@ -46,7 +48,7 @@ Options:
     -n, --name [name]  name of the eb environment to update
     -a, --app [app]    name of the Elastic Beanstalk app
     -l, --local        populates the local enviornment
-    -c, --cloud        populates the elastic beanstalk enviornment
+    -c, --cloud        populates the elastic beanstalk environment
     -h, --help         output usage information
   
   Commands:
