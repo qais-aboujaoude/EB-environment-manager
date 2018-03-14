@@ -31,8 +31,8 @@ module.exports = {
    * @async
    * @method getEnvironmentVariables runs the sdk's function describeConfigurationSettings
    * filters the returned object  and string containing the the evnironment variables
-   * @param {string} app_name name of the elastic beanstalk application
-   * @param {string} env_name name of the environment to retreieve the variables from
+   * @param {string} app name of the elastic beanstalk application
+   * @param {string} env name of the environment to retreieve the variables from
    * @return {string} a string that contains the environment variables
    */
   getEnvironmentVariables: (app, env) => {
