@@ -26,14 +26,14 @@ program
 
 program
   .version('1.2.0')
-  .description('A tool to manage the enviornment variables of an Elastic Beanstalk App')
+  .description('A tool to manage the environment variables of an Elastic Beanstalk App')
   .usage('[options] <file ...>')
   .arguments('<file>')
   .option('-p, --path [path]', 'path of the json file to parse')
   .option('-n, --name [name]', 'name of the Elastic Beanstalk environment to update')
   .option('-a, --app [app]', 'name of the Elastic Beanstalk app')
-  .option('-l, --local', 'populates the local enviornment')
-  .option('-c, --cloud', 'populates the elastic beanstalk enviornment')
+  .option('-l, --local', 'populates the local environment')
+  .option('-c, --cloud', 'populates the elastic beanstalk environment')
   .action(file => {
     if (m.file_type(file) === 'json') {
       m.read_file(program.path, file)
