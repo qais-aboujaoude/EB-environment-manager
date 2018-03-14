@@ -4,3 +4,4 @@ node_modules/*
 npm-debug.log
 testing-files/ 
 .env
+.vscode/launch.json
