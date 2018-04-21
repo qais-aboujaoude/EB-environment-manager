@@ -6,12 +6,11 @@ const fs       = require('fs'),
    * @param file_to_parse the csv file to read
    * @return {object} a readline object
    */
-const file_reader = file_to_parse => {
-    return readline.createInterface({
+const file_reader = file_to_parse => readline
+  .createInterface({
       input: fs.createReadStream(file_to_parse),
       terminal: false
     })
-  }
 
 const csv_parser = module.exports = {
 
