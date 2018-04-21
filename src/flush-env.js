@@ -1,4 +1,4 @@
-const eb_sdk  = require('./eb-sdk'),
+const eb  = require('./eb-sdk'),
       exec    = require('child_process').exec
 
 module.exports = {  
@@ -12,13 +12,13 @@ module.exports = {
    * @param {string} name name of the environment to flush
    */
   flushEnvironmentVariables: (app, name) => {
-    eb_sdk.getEnvironmentVariables(app, name)
-    .then(r => {
-      exec(`eb setenv ${r}`, (err, stdout, stderr) => {
-        err ? console.log(err, stderr) : console.log(stdout)
+    eb.getEnvironmentVariables(app, name)
+      .then(r => {
+        exec(`eb setenv ${r}`, (err, stdout, stderr) => {
+          err ? console.log(err, stderr) : console.log(stdout)
+        })
       })
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
   
 }
