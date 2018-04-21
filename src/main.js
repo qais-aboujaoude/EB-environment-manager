@@ -56,7 +56,8 @@ const main = module.exports = {
   },
 
   /**
-   * @method envToObject the config and turns it into a string of environment variables
+   * @method envToObject takes an array of config and turns it into 
+   * a string of environment variables
    * @param {array} envArray. the array of variables to be turned into a string
    * @return {} a string of enviornment variables
    **/
