@@ -77,7 +77,7 @@ const main = module.exports = {
    */
   createDotenvFile: envArray => {
     const file = fs.createWriteStream('.env');
-    file.on('error', err => { throw new Error(`Error: ${err}`) })
+    file.on('error', err => { throw new Error(err) })
     for (let [index, val] of envArray.entries()) {
       file.write(`${val[0].toUpperCase()}=${val[1]} \n`)
     }
