@@ -32,7 +32,7 @@ const csvParser = module.exports = {
         .on('close', () => {
           parsedArray.length
             ? resolve(parsedArray)
-            : reject('Error: empty array')
+            : reject(Error('Array is empty'))
         })
     })
   }
