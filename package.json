@@ -1,6 +1,6 @@
 {
   "name": "eb-environment-manager",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "cli tool to fill the environment variables of an elastic beanstalk environment and generates .env files",
   "repository": "github:qais-aboujaoude/EB-environment-manager.git",
   "main": "index.js",
