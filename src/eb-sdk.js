@@ -4,12 +4,12 @@ const AWS              = require('aws-sdk'),
       elasticbeanstalk = new AWS.ElasticBeanstalk()
 
 /**
- * @method format_output replaces everything between a '=' and till a ','
+ * @method formatOutput replaces everything between a '=' and till a ','
  * with an empty space
  * @param {string} string to format
  * @return {string} formatted string
  */
-const format_output= s => s.replace(/=.*?,/g, '= ').replace(/(.*=).*/, '$1 ')
+const formatOutput= s => s.replace(/=.*?,/g, '= ').replace(/(.*=).*/, '$1 ')
 
 module.exports = {
 
@@ -45,11 +45,11 @@ module.exports = {
           reject(err, err.stack)
         }
         else {
-          const env_array = data.ConfigurationSettings[0].OptionSettings
+          const envArray = data.ConfigurationSettings[0].OptionSettings
             .filter(o => o.OptionName === 'EnvironmentVariables')
-          typeof env_array[0].Value === 'undefined'
+          typeof envArray[0].Value === 'undefined'
             ? reject(`Error: Environment doesn't contain any Environment Variables`)
-            : resolve(format_output(env_array[0].Value))
+            : resolve(formatOutput(envArray[0].Value))
         }
       })
     })
