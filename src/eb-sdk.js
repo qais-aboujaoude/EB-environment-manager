@@ -23,7 +23,7 @@ module.exports = {
   updateEnvironmentVariables: params => {
     elasticbeanstalk.updateEnvironment(params, (err, data) => {
       if (err) console.log(err, err.stack)
-      else     console.log(data)
+      else     console.log('Success: Environment is updating!\n', data)
     })
   },
 
