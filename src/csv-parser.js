@@ -8,9 +8,9 @@ const fs       = require('fs'),
    */
 const fileReader = fileToParse => readline
   .createInterface({
-      input: fs.createReadStream(fileToParse),
-      terminal: false
-    })
+    input: fs.createReadStream(fileToParse),
+    terminal: false
+  })
 
 const csvParser = module.exports = {
 
