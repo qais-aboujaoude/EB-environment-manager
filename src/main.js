@@ -61,15 +61,13 @@ const main = module.exports = {
    * @param {array} envArray. the array of variables to be turned into a string
    * @return {} a string of enviornment variables
    **/
-  envToObject: envArray => {
-    return envArray.map(e => {
-      return {
-        Namespace: "aws:elasticbeanstalk:application:environment",
-        OptionName: e[0].toUpperCase(),
-        Value: e[1]
-      }
+  envToObject: envArray => envArray.map(e => 
+    ({
+      Namespace: "aws:elasticbeanstalk:application:environment",
+      OptionName: e[0].toUpperCase(),
+      Value: e[1]
     })
-  },
+  ),
 
   /**
    * @method createDotenvFile takes an array, creates a write stream
