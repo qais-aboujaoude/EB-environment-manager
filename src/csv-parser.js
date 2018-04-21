@@ -2,36 +2,36 @@ const fs       = require('fs'),
       readline = require('readline')
 
   /**
-   * @method file_reader opens an interface to reads and parse csv file
-   * @param file_to_parse the csv file to read
+   * @method fileReader opens an interface to reads and parse csv file
+   * @param fileToParse the csv file to read
    * @return {object} a readline object
    */
-const file_reader = file_to_parse => readline
+const fileReader = fileToParse => readline
   .createInterface({
-      input: fs.createReadStream(file_to_parse),
+      input: fs.createReadStream(fileToParse),
       terminal: false
     })
 
-const csv_parser = module.exports = {
+const csvParser = module.exports = {
 
   /**
    * @async
-   * @method pasre_csv_to_array reada csv file line by line. splits the line at
+   * @method parseCSVToArray reads a csv file line by line. splits the line at
    * a comma and pushes it into an array
-   * @param file_to_parse the csv file to read and parse
-   * @return {array} parsed_array, an array contains the parsed csv file
+   * @param fileToParse the csv file to read and parse
+   * @return {array} parsedArray, an array contains the parsed csv file
    */
-  pasre_csv_to_array: file_to_parse => {
-    const parsed_array = []
+  parseCSVToArray: fileToParse => {
+    const parsedArray = []
     return new Promise((resolve, reject) => {
-      file_reader(file_to_parse)
+      fileReader(fileToParse)
         .on('line', input => {
           let index = input.indexOf(',')
-          parsed_array.push([input.slice(0, index), input.slice(index + 1)])
+          parsedArray.push([input.slice(0, index), input.slice(index + 1)])
         })
         .on('close', () => {
-          parsed_array.length
-            ? resolve(parsed_array)
+          parsedArray.length
+            ? resolve(parsedArray)
             : reject('Error: empty array')
         })
     })
